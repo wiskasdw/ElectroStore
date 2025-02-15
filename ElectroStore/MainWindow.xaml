@@ -1,0 +1,30 @@
+﻿<Window x:Class="ElectroStore.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ElectroStore - Магазин бытовой техники" Height="600" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая панель (Категории) -->
+        <ListBox x:Name="CategoryListBox" Grid.Column="0" Margin="5" SelectionChanged="CategoryListBox_SelectionChanged"/>
+
+        <!-- Правая панель (Товары) -->
+        <ListView x:Name="ProductListView" Grid.Column="1" Margin="5">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название" Width="200" DisplayMemberBinding="{Binding ProductName}"/>
+                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Header="Количество" Width="80" DisplayMemberBinding="{Binding Quantity}"/>
+                    <!-- Добавьте другие колонки -->
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- Кнопка добавления товара (можно разместить в верхней панели) -->
+        <Button Content="Добавить товар" Click="AddProductButton_Click" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
